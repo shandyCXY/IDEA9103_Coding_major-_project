@@ -1,5 +1,5 @@
 let inc = 0.1;
-let scl = 6; //segmet size
+let scl; //segmet size
 let cols, rows;
 let skyColorsFrom = [];
 let skyColorsTo = [];
@@ -16,7 +16,9 @@ let waterColorsLerpC = [];
 let waterColorsLerpD = [];
 
 function setup() {
-  createCanvas(windowWidth, windowHeight); // cols = floor(windowWidth / scl); // rows = floor(windowHeight / scl);
+  createCanvas(windowWidth, windowHeight);
+  scl = windowHeight/140;
+   // cols = floor(windowWidth / scl); // rows = floor(windowHeight / scl);
   cols = windowWidth / scl;
   rows = windowHeight / scl; //Define the color arrays for lerpColor(). //The colors are: [0]navy blue, [1]sea green, [2]bright yellow, [3]orange red, [4]dark red
   waterColorsFrom.push(
@@ -63,6 +65,7 @@ function draw() {
   background(0);
   randomSeed(45);
   translate(0, windowHeight / 2);
+
   let yoff = 0;
   for (let y = 0; y < rows / 2; y++) {
     let xoff = 0;
@@ -94,6 +97,13 @@ function draw() {
   } //reference web:https://www.youtube.com/watch?v=BjoM9oKOAKY&t=3s.
 }
 
+function updateWater(){
+  scl = windowHeight / 140;
+  cols = windowWidth / scl;
+  rows = windowHeight / scl;
+  yoff = 0;
+}
 function windowResized() {
+  updateWater();
   resizeCanvas(windowWidth, windowHeight);
 }
