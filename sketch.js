@@ -15,57 +15,49 @@ let waterColorsLerpB = [];
 let waterColorsLerpC = [];
 let waterColorsLerpD = [];
 
-
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  // cols = floor(windowWidth / scl);
-  // rows = floor(windowHeight / scl);
-  cols=windowWidth/scl;
-  rows=windowHeight/scl;
-  //Define the color arrays for lerpColor().
+  createCanvas(windowWidth, windowHeight); // cols = floor(windowWidth / scl); // rows = floor(windowHeight / scl);
+  cols = windowWidth / scl;
+  rows = windowHeight / scl; //Define the color arrays for lerpColor(). //The colors are: [0]navy blue, [1]sea green, [2]bright yellow, [3]orange red, [4]dark red
+  waterColorsFrom.push(
+    //color(205, 74, 74),
+    color(193, 113, 67),
+    color(255, 214, 101),
+    color(125, 155, 147),
+    color(62, 84, 143)
+  ); //The colors are: [0]sea green, [1]bright yellow, [2]orange red
 
-  //The colors are: [0]navy blue, [1]sea green, [2]bright yellow, [3]orange red, [4]dark red
-  waterColorsFrom.push(
-    //color(205, 74, 74),
-    color(193, 113, 67),
-    color(255, 214, 101),
-    color(125, 155, 147),
-    color(62, 84, 143)
+  waterColorsTo.push(
+    color(205, 74, 74),
+    color(193, 113, 67),
+    color(255, 214, 101),
+    color(125, 155, 147)
+  ); //Build four arrays: skyColorLerp A/B/C/D to contain the lerpColor() results between the //skyColorsFrom[] and skyColorsTo[] //A
 
-  );
+  for (let k = 1; k < 9; k++) {
+    waterColorsLerpA.push(
+      lerpColor(waterColorsFrom[0], waterColorsTo[0], k * 0.125)
+    );
+  } //B
 
-  //The colors are: [0]sea green, [1]bright yellow, [2]orange red
-  waterColorsTo.push(
-    color(205, 74, 74),
-    color(193, 113, 67),
-    color(255, 214, 101),
-    color(125, 155, 147)
-  );
+  for (let k = 1; k < 9; k++) {
+    waterColorsLerpB.push(
+      lerpColor(waterColorsFrom[1], waterColorsTo[1], k * 0.125)
+    );
+  } //C
 
-  //Build four arrays: skyColorLerp A/B/C/D to contain the lerpColor() results between the
-  //skyColorsFrom[] and skyColorsTo[]
+  for (let k = 1; k < 9; k++) {
+    waterColorsLerpC.push(
+      lerpColor(waterColorsFrom[2], waterColorsTo[2], k * 0.125)
+    );
+  } //D
 
-  //A
-  for (let k = 1; k < 9; k++) {
-    waterColorsLerpA.push(lerpColor(waterColorsFrom[0], waterColorsTo[0], k* 0.125));
-  }
-
-  //B
-  for (let k = 1; k < 9; k++) {
-    waterColorsLerpB.push(lerpColor(waterColorsFrom[1], waterColorsTo[1], k * 0.125));
-  }
-
-  //C
-  for (let k = 1; k < 9; k++) {
-    waterColorsLerpC.push(lerpColor(waterColorsFrom[2], waterColorsTo[2], k * 0.125));
-  }
-
-  //D
-  for (let k = 1; k < 9; k++) {
-    waterColorsLerpD.push(lerpColor(waterColorsFrom[3], waterColorsTo[3], k* 0.125));
-  }
+  for (let k = 1; k < 9; k++) {
+    waterColorsLerpD.push(
+      lerpColor(waterColorsFrom[3], waterColorsTo[3], k * 0.125)
+    );
+  }
 }
-
 
 function draw() {
   background(0);
