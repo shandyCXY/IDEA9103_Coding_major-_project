@@ -1,5 +1,5 @@
 let inc = 0.1;
-let scl = 10; //segmet size
+let scl = 6; //segmet size
 let cols, rows;
 let skyColorsFrom = [];
 let skyColorsTo = [];
@@ -82,9 +82,9 @@ function draw() {
 
     if (y < 8) {
       fill(waterColorsLerpA[y]);
-    } else if (y >= 8 && y < 18) {
+    } else if (y >= 8 && y < 27) {
       fill(waterColorsLerpB[y % 8]);
-    } else if (y >= 18 && y <= 27) {
+    } else if (y >= 27 && y <=45) {
       fill(waterColorsLerpC[y % 8]);
     } else {
       fill(waterColorsLerpD[y % 8]);
