@@ -36,22 +36,22 @@ function setup() {
 
   //A
   for (let k = 1; k < 9; k++) {
-    skyColorsLerpA.push(lerpColor(skyColorsFrom[0], skyColorsTo[0], k* 0.11));
+    skyColorsLerpA.push(lerpColor(skyColorsFrom[0], skyColorsTo[0], k* 0.125));
   }
 
   //B
   for (let k = 1; k < 9; k++) {
-    skyColorsLerpB.push(lerpColor(skyColorsFrom[1], skyColorsTo[1], k * 0.11));
+    skyColorsLerpB.push(lerpColor(skyColorsFrom[1], skyColorsTo[1], k * 0.125));
   }
 
   //C
   for (let k = 1; k < 9; k++) {
-    skyColorsLerpC.push(lerpColor(skyColorsFrom[2], skyColorsTo[2], k * 0.11));
+    skyColorsLerpC.push(lerpColor(skyColorsFrom[2], skyColorsTo[2], k * 0.125));
   }
 
   //D
   for (let k = 1; k < 9; k++) {
-    skyColorsLerpD.push(lerpColor(skyColorsFrom[3], skyColorsTo[3], k* 0.11));
+    skyColorsLerpD.push(lerpColor(skyColorsFrom[3], skyColorsTo[3], k* 0.125));
   }
 }
 
@@ -63,7 +63,6 @@ function draw() {
   for (let y = 0; y < rows / 2; y++) {
     let xoff= 0;
     for (let x = 0; x < cols; x++) {
-      let index = (x + y * width) * 3;
       let angle = noise(xoff, yoff) * TWO_PI;
       let v = p5.Vector.fromAngle(angle * -0.2);
       xoff += inc;
@@ -78,20 +77,20 @@ function draw() {
     }
 
     if (y < 9) {
-      fill(skyColorsLerpA[round(y)]);
-      yoff += inc;
-    } else if (9 < y < 18) {
-      fill(skyColorsLerpB[round(y) % 9]);
-      yoff += inc;
-    } else if (18 < y < 27) {
-      fill(skyColorsLerpC[round(y) % 9]);
-      yoff += inc;
-    } else {
-      fill(skyColorsLerpD[round(y) % 9]);
-      yoff += inc;
-    
+      fill(skyColorsLerpD[y]);
+    } 
+    else if (9 < y < 18) {
+      fill(skyColorsLerpC[y % 9]);  
+    } 
+    else if (18 < y < 27) {
+      fill(skyColorsLerpB[y % 9]);
+ 
+    } 
+    else {
+      fill(skyColorsLerpA[y % 9]);
+      
     }
-    console.log(skyColorsLerpA[round(y)]);
+    yoff += inc; 
   }
 
   //reference web:https://www.youtube.com/watch?v=BjoM9oKOAKY&t=3s.
