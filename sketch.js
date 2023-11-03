@@ -79,6 +79,7 @@ function draw() {
       rect(0, 0, 23, 4);
       pop();
     }
+  
 
     if (y < 8) {
       fill(waterColorsLerpA[y]);
